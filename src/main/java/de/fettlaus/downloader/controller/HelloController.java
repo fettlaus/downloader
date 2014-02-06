@@ -20,7 +20,7 @@ import de.fettlaus.downloader.service.model.Config;
 import de.fettlaus.downloader.service.model.User;
 
 @Controller
-@RequestMapping(value = "/hello")
+@RequestMapping(value = "/downloader")
 public class HelloController extends SessionController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
@@ -29,7 +29,7 @@ public class HelloController extends SessionController {
 	public ModelAndView handleRequest(@ModelAttribute("user") User user,
 			ModelMap model) throws ServletException, IOException, SQLException {
 		model.addAttribute(hello.getUsers());
-		return new ModelAndView("hello");
+		return new ModelAndView("list");
 	}
 
 	@RequestMapping(method = RequestMethod.POST)

@@ -1,1 +1,3 @@
 /target
+derby.log
+org.hibernate.eclipse.console.prefs

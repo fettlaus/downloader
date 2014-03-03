@@ -12,7 +12,7 @@
 
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.default_schema" value="downloader" />
 			<property name="hibernate.format_sql" value="false" />

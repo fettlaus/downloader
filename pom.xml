@@ -84,7 +84,7 @@
 				<version>${embedded-glassfish.version}</version>
 				<configuration>
 					<app>${project.build.directory}/${project.build.finalName}.${project.packaging}</app>
-					<contextRoot>test</contextRoot>
+					<contextRoot>${project.artifactId}</contextRoot>
 					<port>8080</port>
 					<autoDelete>true</autoDelete>
 				</configuration>

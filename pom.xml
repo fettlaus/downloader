@@ -9,23 +9,35 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<start-class>hello.controller.IndexController</start-class>
+		<start-class>de.fettlaus.downloader.controller.IndexController</start-class>
 		<spring.version>3.2.5.RELEASE</spring.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<hibernate.version>4.2.7.Final</hibernate.version>
 		<embedded-glassfish.version>4.0</embedded-glassfish.version>
-		<glassfish.glassfishDirectory>C:/Program Files (x86)/glassfish4</glassfish.glassfishDirectory>
 		<glassfish.version>2.1</glassfish.version>
-		<glassfish.user>admin</glassfish.user>
-		<glassfish.adminPassword>admin</glassfish.adminPassword>
-		<glassfish.domain.name>domain1</glassfish.domain.name>
-		<glassfish.domain.host>localhost</glassfish.domain.host>
-		<glassfish.domain.adminPort>4848</glassfish.domain.adminPort>
 	</properties>
 
 	<build>
 		<finalName>downloader</finalName>
 		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0-alpha-2</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>read-project-properties</goal>
+						</goals>
+						<configuration>
+							<files>
+								<file>${basedir}/dev.properties</file>
+							</files>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>

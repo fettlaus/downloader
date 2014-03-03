@@ -2,25 +2,59 @@ package de.fettlaus.downloader.service.model;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.Type;
+
 
 /**
  * Entity implementation class for Entity: Application
  *
  */
 @Entity
-public class Application implements Serializable {
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+public class Application implements Serializable, DomainObject {
 
 	   
 	@Id
+	@GeneratedValue
 	private long id;
-	private Site site;
+	
+	@NotNull
 	private String name;
-	private Version currentversion;
-	private static final long serialVersionUID = 1L;
+	
+	private String filename;
+	
+	@Column(nullable = false, columnDefinition = "CHAR(1)")
+	private boolean rename;
+	
+	@Column(nullable = false, columnDefinition = "CHAR(1)")
+	private boolean enabled;
+	
+	@OneToMany
+	private List<Version> history;
 
+	private static final long serialVersionUID = 1L;
+	
+	@Column()
+	@NotNull
+	private String plugin;
+	
+	@Column
+	private String regexReplace;
+	
+	@Column
+	private String regexWith;
+	
 	public Application() {
 		super();
 	}   
@@ -31,13 +65,7 @@ public class Application implements Serializable {
 	public void setId(long id) {
 		this.id = id;
 	}   
-	public Site getSite() {
-		return this.site;
-	}
-
-	public void setSite(Site site) {
-		this.site = site;
-	}   
+ 
 	public String getName() {
 		return this.name;
 	}
@@ -45,12 +73,6 @@ public class Application implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}   
-	public Version getCurrentVersion() {
-		return this.currentversion;
-	}
 
-	public void setCurrentVersion(Version currentversion) {
-		this.currentversion = currentversion;
-	}
    
 }

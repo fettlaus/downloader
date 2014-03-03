@@ -10,14 +10,14 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Version implements Serializable {
+public class Version implements Serializable, DomainObject {
 
 	   
 	@Id
 	private long id;
+	
 	private Timestamp timestamp;
-	private Application application;
-	private Site site;
+	
 	private static final long serialVersionUID = 1L;
 
 	public Version() {
@@ -37,19 +37,5 @@ public class Version implements Serializable {
 	public void setTimestamp(Timestamp timestamp) {
 		this.timestamp = timestamp;
 	}   
-	public Application getApplication() {
-		return this.application;
-	}
-
-	public void setApplication(Application application) {
-		this.application = application;
-	}   
-	public Site getSite() {
-		return this.site;
-	}
-
-	public void setSite(Site site) {
-		this.site = site;
-	}
    
 }

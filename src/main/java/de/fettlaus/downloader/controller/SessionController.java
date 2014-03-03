@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import de.fettlaus.downloader.service.HelloService;
+import de.fettlaus.downloader.service.UserService;
 import de.fettlaus.downloader.service.model.User;
 
 @Controller
@@ -15,7 +15,7 @@ import de.fettlaus.downloader.service.model.User;
 public class SessionController {
 
 	@Inject
-	protected HelloService hello;
+	protected UserService userService;
 
 	@ModelAttribute
 	public void newUser(Model model) {

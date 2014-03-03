@@ -3,7 +3,7 @@
 <table style="width: 100%">
 	<tr>
 		<td><a href="${pageContext.request.contextPath}">Home</a></td>
-		<td><a href="${pageContext.request.contextPath}/hello">Greeter</a></td>
+		<td><a href="${pageContext.request.contextPath}/user">User</a></td>
 		<td>Greetings, ${user.name}</td>
 	</tr>
 </table>

@@ -13,7 +13,7 @@ import de.fettlaus.downloader.service.model.Config;
 import de.fettlaus.downloader.service.model.User;
 
 @Service
-public class HelloServiceImpl implements HelloService {
+public class UserServiceImpl implements UserService {
 
 	@Inject
 	private HelloDao helloDao;

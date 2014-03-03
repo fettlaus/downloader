@@ -5,7 +5,7 @@ import java.util.List;
 import de.fettlaus.downloader.service.model.Config;
 import de.fettlaus.downloader.service.model.User;
 
-public interface HelloService {
+public interface UserService {
 
 	public void newUser(final String username);
 

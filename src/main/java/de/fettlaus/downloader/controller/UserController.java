@@ -20,47 +20,47 @@ import de.fettlaus.downloader.service.model.Config;
 import de.fettlaus.downloader.service.model.User;
 
 @Controller
-@RequestMapping(value = "/downloader")
-public class HelloController extends SessionController {
+@RequestMapping(value = "/user")
+public class UserController extends SessionController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView handleRequest(@ModelAttribute("user") User user,
 			ModelMap model) throws ServletException, IOException, SQLException {
-		model.addAttribute(hello.getUsers());
-		return new ModelAndView("list");
+		model.addAttribute(userService.getUsers());
+		return new ModelAndView("userlist");
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView handlePost(@ModelAttribute("user") User user,
 			ModelMap model) {
-		hello.newUser(user.getName());
-		model.addAttribute(hello.getUsers());
-		return new ModelAndView("hello");
+		userService.newUser(user.getName());
+		model.addAttribute(userService.getUsers());
+		return new ModelAndView("userlist");
 	}
 
-	@RequestMapping(value = "/user/{usrid}/delete")
+	@RequestMapping(value = "/{usrid}/delete")
 	public ModelAndView handleUsrDelete(@PathVariable("usrid") long usrid,
 			Model model) {
-		hello.deleteuser(usrid);
-		model.addAttribute(hello.getUsers());
-		return new ModelAndView("hello");
+		userService.deleteuser(usrid);
+		model.addAttribute(userService.getUsers());
+		return new ModelAndView("userlist");
 	}
 
-	@RequestMapping(value = "/user/{usrid}/adminify")
+	@RequestMapping(value = "/{usrid}/adminify")
 	public ModelAndView handleMakeAdmin(@PathVariable("usrid") long usrid,
 			Model model) {
-		Config config = hello.makeAdmin(usrid);
-		model.addAttribute(hello.getUsers());
+		Config config = userService.makeAdmin(usrid);
+		model.addAttribute(userService.getUsers());
 		if (config != null)
 			model.addAttribute(config);
-		return new ModelAndView("hello");
+		return new ModelAndView("userlist");
 	}
 
 	@ModelAttribute
 	public void loadConfig(Model model) {
-		Config config = hello.getConfig();
+		Config config = userService.getConfig();
 		if (config != null) {
 			model.addAttribute(config);
 		}

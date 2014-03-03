@@ -5,7 +5,7 @@
 	Greetings, ${user.name}!
 	<c:if test="${not empty userList[0]}">(and ${userList[0].name})</c:if>
 </p>
-<form:form method="POST" commandName="user" action="${baseURL}/hello">
+<form:form method="POST" commandName="user" action="${baseURL}/user">
 	<table>
 		<tr>
 			<td><form:label path="name">Name:</form:label></td>
@@ -36,9 +36,9 @@
 							<c:otherwise>${usr.name}</c:otherwise>
 						</c:choose></td>
 					<td><c:if test="${config.admin.id ne usr.id }">
-							<a href="${baseURL}/hello/user/${usr.id}/delete">[delete]</a>
+							<a href="${baseURL}/user/${usr.id}/delete">[delete]</a>
 							<br />
-							<a href="${baseURL}/hello/user/${usr.id}/adminify">[admin]</a>
+							<a href="${baseURL}/user/${usr.id}/adminify">[admin]</a>
 						</c:if></td>
 				</tr>
 			</c:forEach>
